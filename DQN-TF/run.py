@@ -39,6 +39,7 @@ def train():
             replay = ExperienceReplay(args.buffer_size)
             
             for t in range(0, args.timesteps):
+                env.render()
                 action, qv = sess.run([maxaction, qvalue], feed_dict={obsv: s_t})
                 if(np.random.rand(1) < args.epsillon):
                     action[0] = env.action_space.sample()
